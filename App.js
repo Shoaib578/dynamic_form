@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker'
 import { RadioButton } from 'react-native-paper';
 
 const data = [
-    {
+  [{
           "element_type": "text",
           "element_value": "First name",
           "element_id": "lbl_fname",
@@ -17,9 +17,9 @@ const data = [
           "element_id": "text_fname",
           "is_required": true,
           "validation_scheme": ""
-      },
- 
-      {
+      }
+  ],
+  [{
           "element_type": "text",
           "element_value": "Last name",
           "element_id": "lbl_lname",
@@ -32,9 +32,9 @@ const data = [
           "element_id": "textfname",
           "is_required": true,
           "validation_scheme": ""
-      },
- 
-    {
+      }
+  ],
+  [{
           "element_type": "radio",
           "element_value": "is_approved",
           "element_id": "lbl_is_approved",
@@ -48,15 +48,17 @@ const data = [
           "is_required": true,
           "validation_scheme": ""
       }
-  ,
-  {
+  ],
+  [{
       "element_type": "button",
       "element_value": "Submit",
       "element_id": "lbl_Submit",
       "is_required": true,
       "validation_scheme": ""
-  }
+  }]
 ]
+
+
 export default class App extends React.Component{
  state = {
    select_value:'',
@@ -74,7 +76,9 @@ export default class App extends React.Component{
     return(
       <View style={{flex:1,padding:10}}>
         {
-          data.map(item=>{
+          data.map(struc=>{
+           return struc.map(item=>{
+
             if(item.element_type == "text"){
               return <Text style={{color:'black',fontSize:20}} key={item.element_id}>{item.element_value}</Text>
               
@@ -156,6 +160,8 @@ export default class App extends React.Component{
               </TouchableOpacity>
             }
           })
+        })
+
         }
       </View>
     )
